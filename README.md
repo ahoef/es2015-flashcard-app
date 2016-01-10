@@ -2,14 +2,14 @@
 
 A basic MVC app written in vanilla ES2015 JavaScript, with a toolset of Babel, Gulp, Browserify and Sass. Users can view flashcard questions, click to reveal answers, and paginate forward and backward through cards.
 
-www.ahoef.co/js-flashcards
+<!-- www.ahoef.co/js-flashcards -->
 
 
-### Development ### 
+### Development 
 
 Clone or fork this repo, run `npm install` from the directory, then run `gulp`, and you're all set! A local server isn't required. 
 
-I chose to set up my flashcard content around JavaScript, but you could easily change the questions and answers to whatever you'd like to study. Here's the basic schema for a card:
+I chose to set up my flashcard content around JavaScript, but you could easily change the questions and answers to whatever you'd like to study. Here's the schema for a card:
 
 ```javascript
 {
