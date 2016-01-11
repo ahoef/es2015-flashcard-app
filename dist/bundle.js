@@ -159,8 +159,8 @@ var flashcardContent = exports.flashcardContent = [{
 	source: "Mozilla Developer Network",
 	sourceUrl: "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#Object_literals"
 }, {
-	question: "What are the three parameters of <code>.forEach()</code>?",
-	answer: "<code>[\"dog\", \"cat\", \"hen\"].forEach(function(currentValue, index, array) {// Do something with currentValue or array[index]});</code>",
+	question: "What are the three parameters of the callback in <code>.forEach()</code>?",
+	answer: "<code>currentValue, index, array</code>. Ex:<br><code>[\"dog\", \"cat\", \"hen\"].forEach(function(currentValue, index, array) {// Do something with currentValue or array[index]});</code>",
 	source: "Mozilla Developer Network",
 	sourceUrl: "https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript"
 }, {

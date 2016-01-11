@@ -1,0 +1,21 @@
+body {
+	margin: 0;
+	padding: 0;
+	font-family: 'Rambla', sans-serif;
+	text-align: center;
+	box-sizing: border-box;
+}
+
+#flashcard {
+	border: 3px solid purple;
+    border-radius: 5px;
+    max-width: 400px;
+    width: 90%;
+    margin: 50px auto;
+    height: 400px;
+    padding: 40px;
+}
+
+.question {
+	height: 200px;
+}
