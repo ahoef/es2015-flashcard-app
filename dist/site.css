@@ -10,9 +10,47 @@ body {
   border-radius: 5px;
   max-width: 400px;
   width: 90%;
-  margin: 50px auto;
   height: 400px;
-  padding: 40px; }
+  padding: 40px;
+  background-color: white;
+  margin: 50px auto;
+  position: relative; }
+  #flashcard .card-stack-1 {
+    border: 3px solid purple;
+    border-radius: 5px;
+    max-width: 400px;
+    width: 90%;
+    height: 400px;
+    padding: 40px;
+    background-color: white;
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    z-index: -1; }
+  #flashcard .card-stack-2 {
+    border: 3px solid purple;
+    border-radius: 5px;
+    max-width: 400px;
+    width: 90%;
+    height: 400px;
+    padding: 40px;
+    background-color: white;
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    z-index: -2; }
+  #flashcard .card-stack-3 {
+    border: 3px solid purple;
+    border-radius: 5px;
+    max-width: 400px;
+    width: 90%;
+    height: 400px;
+    padding: 40px;
+    background-color: white;
+    position: absolute;
+    top: -30px;
+    right: -30px;
+    z-index: -3; }
 
 .question {
   height: 200px; }

@@ -21,6 +21,6 @@ gulp.task('sass', () => {
 
 gulp.task('watch', function() {
     gulp.watch('src/*.js', ['browserify']);
-    gulp.watch('src/css/site.scss', ['sass']);
+    gulp.watch('src/css/*.scss', ['sass']);
 });
 

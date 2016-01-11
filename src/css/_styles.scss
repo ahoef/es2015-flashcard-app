@@ -1,0 +1,26 @@
+body {
+	margin: 0;
+	padding: 0;
+	font-family: 'Rambla', sans-serif;
+	text-align: center;
+	box-sizing: border-box;
+}
+
+#flashcard {
+    @include card;
+    margin: 50px auto;
+    position: relative;
+    .card-stack-1 {
+        @include card-stack(1);
+    }
+    .card-stack-2 {
+        @include card-stack(2);
+    }
+    .card-stack-3 {
+        @include card-stack(3);
+    }
+}
+
+.question {
+	height: 200px;
+}

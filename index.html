@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 	  	<title>ES2015 Flashcard App</title>
-		
+
 	  	<meta charset="UTF-8">
 	  	<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     	<meta name="description" content="This is a basic flashcard app built by Alexandra Hoefinger, using Babel, Browserify, Gulp, Sass, and ES2015">
@@ -12,8 +12,15 @@
 	</head>
 	<body>
 		<section id="flashcard">
-			<div class="question"></div>
-			<div class="answer"></div>
+			<article class="card">
+				<div class="question"></div>
+				<div class="answer">
+					<div class="source">&mdash;&nbsp; </div>
+				</div>
+			</article>
+			<div class="card-stack-1"></div>
+			<div class="card-stack-2"></div>
+			<div class="card-stack-3"></div>
 		</section>
 
 		<section id="controls">
