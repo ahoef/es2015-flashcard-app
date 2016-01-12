@@ -1,17 +1,32 @@
 @mixin card {
-    border: 3px solid purple;
+    border: 3px solid $mainColor;
     border-radius: 5px;
-    max-width: 400px;
+    max-width: 300px;
     width: 90%;
-    height: 400px;
-    padding: 40px;
+    height: 520px;
+    padding: 0 40px;
     background-color: white;
+    @media (max-width: 640px) {
+	    max-width: 240px;
+	    padding: 0 20px;
+	    height: 460px;
+	}
 }
 
 @mixin card-stack($offset) {
 	@include card;
     position: absolute;
-    top: (-10 * $offset) + px;
-    right: (-10 * $offset) + px;
+    top: (-10 * $offset) - 3 + px;
+    right: (-10 * $offset) - 3 + px;
     z-index: -($offset);
+}
+
+@mixin center-align {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
 }

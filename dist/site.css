@@ -2,55 +2,110 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Rambla', sans-serif;
+  font-size: 18px;
+  line-height: 1.5;
+  color: #444;
   text-align: center;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  background-color: #3D7587; }
 
 #flashcard {
-  border: 3px solid purple;
+  border: 3px solid #3D7587;
   border-radius: 5px;
-  max-width: 400px;
+  max-width: 300px;
   width: 90%;
-  height: 400px;
-  padding: 40px;
+  height: 520px;
+  padding: 0 40px;
   background-color: white;
-  margin: 50px auto;
+  margin: 50px auto 30px;
   position: relative; }
+  @media (max-width: 640px) {
+    #flashcard {
+      max-width: 240px;
+      padding: 0 20px;
+      height: 460px; } }
   #flashcard .card-stack-1 {
-    border: 3px solid purple;
+    border: 3px solid #3D7587;
     border-radius: 5px;
-    max-width: 400px;
+    max-width: 300px;
     width: 90%;
-    height: 400px;
-    padding: 40px;
+    height: 520px;
+    padding: 0 40px;
     background-color: white;
     position: absolute;
-    top: -10px;
-    right: -10px;
+    top: -13px;
+    right: -13px;
     z-index: -1; }
+    @media (max-width: 640px) {
+      #flashcard .card-stack-1 {
+        max-width: 240px;
+        padding: 0 20px;
+        height: 460px; } }
   #flashcard .card-stack-2 {
-    border: 3px solid purple;
+    border: 3px solid #3D7587;
     border-radius: 5px;
-    max-width: 400px;
+    max-width: 300px;
     width: 90%;
-    height: 400px;
-    padding: 40px;
+    height: 520px;
+    padding: 0 40px;
     background-color: white;
     position: absolute;
-    top: -20px;
-    right: -20px;
+    top: -23px;
+    right: -23px;
     z-index: -2; }
+    @media (max-width: 640px) {
+      #flashcard .card-stack-2 {
+        max-width: 240px;
+        padding: 0 20px;
+        height: 460px; } }
   #flashcard .card-stack-3 {
-    border: 3px solid purple;
+    border: 3px solid #3D7587;
     border-radius: 5px;
-    max-width: 400px;
+    max-width: 300px;
     width: 90%;
-    height: 400px;
-    padding: 40px;
+    height: 520px;
+    padding: 0 40px;
     background-color: white;
     position: absolute;
-    top: -30px;
-    right: -30px;
+    top: -33px;
+    right: -33px;
     z-index: -3; }
+    @media (max-width: 640px) {
+      #flashcard .card-stack-3 {
+        max-width: 240px;
+        padding: 0 20px;
+        height: 460px; } }
 
-.question {
-  height: 200px; }
+.question-container, .answer-container {
+  height: 230px;
+  padding: 15px 0;
+  position: relative; }
+
+.question, .answer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 100%; }
+
+button {
+  color: white;
+  font-family: 'Rambla', sans-serif;
+  background-color: #3D7587;
+  font-size: 18px;
+  border: 2px solid white;
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin: 0 5px; }
+  button:hover {
+    cursor: pointer; }
+
+@media (max-width: 640px) {
+  body {
+    font-size: 16px; }
+
+  .question-container, .answer-container {
+    height: 200px; } }

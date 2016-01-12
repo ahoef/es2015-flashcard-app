@@ -160,7 +160,7 @@ var flashcardContent = exports.flashcardContent = [{
 	sourceUrl: "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#Object_literals"
 }, {
 	question: "What are the three parameters of the callback in <code>.forEach()</code>?",
-	answer: "<code>currentValue, index, array</code>. Ex:<br><code>[\"dog\", \"cat\", \"hen\"].forEach(function(currentValue, index, array) {// Do something with currentValue or array[index]});</code>",
+	answer: "<code>currentValue, index, array</code>. Ex:<br><code>[\"dog\", \"cat\", \"hen\"].forEach( (currentValue, index, array) => {});</code>",
 	source: "Mozilla Developer Network",
 	sourceUrl: "https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript"
 }, {
@@ -179,7 +179,7 @@ var flashcardContent = exports.flashcardContent = [{
 	source: "Professor Frisby's Mostly Adequate Guide to Functional Programming",
 	sourceUrl: "https://drboolean.gitbooks.io/mostly-adequate-guide/content/ch3.html"
 }, {
-	question: "What's a closure?'",
+	question: "What's a closure?",
 	answer: "A closure is the combination of a function and the scope object in which it was created. Closures let you save state — as such, they can often be used in place of objects.",
 	source: "Stack Overflow",
 	sourceUrl: "http://stackoverflow.com/questions/111102/how-do-javascript-closures-work"
