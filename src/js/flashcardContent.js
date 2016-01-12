@@ -88,5 +88,23 @@ export const flashcardContent = [
 		answer: "A closure is the combination of a function and the scope object in which it was created. Closures let you save state — as such, they can often be used in place of objects.",
 		source: "Stack Overflow",
 		sourceUrl: "http://stackoverflow.com/questions/111102/how-do-javascript-closures-work"
-	}
+	},
+	{
+		question: "What's the spread operator?",
+		answer: "The spread operator allows an expression to be expanded in places where multiple arguments (for function calls) or multiple elements (for array literals) are expected.",
+		source: "Mozilla Developer Network",
+		sourceUrl: "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_operator"
+	},
+	{
+		question: "What would the <code>.call()</code> method return in this example? <br><code>function add(c, d) {return this.a + this.b + c + d} <br> var o = {a:1, b:3};</code>",
+		answer: "The <code>call()</code> method calls a function with a given this value and arguments provided individually.<br><code>add.call(o, 5, 7); <br>// 1 + 3 + 5 + 7 = 16</code>",
+		source: "Mozilla Developer Network",
+		sourceUrl: "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this#As_a_constructor"
+	},
+	{
+		question: "What would the <code>.apply()</code> method return in this example? <br><code>function add(c, d) {<br>return this.a + this.b + c + d} <br> var o = {a:1, b:3};</code>",
+		answer: "The <code>apply()</code> method calls a function with a given this value and arguments provided as an array (or an array-like object).<br><code>add.apply(o, [10, 20]); <br>// 1 + 3 + 10 + 20 = 34</code>",
+		source: "Mozilla Developer Network",
+		sourceUrl: "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this#As_a_constructor"
+	},
 ];
