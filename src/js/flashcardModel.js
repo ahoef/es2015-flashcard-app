@@ -6,12 +6,20 @@ class FlashcardModel {
 	  	this.orderArray = [];
 	}
 	
+    /**
+    * Generates a random number and saves it to this.randomIndex
+    */
 	generateRandomNum() {
   		const number = Math.floor((Math.random() * flashcardContent.length));
   		this.randomIndex = number;
   		return Promise.resolve(number);
   	} 
 
+    /**
+    * If the action is not 'back', remember the order of random numbers generated
+    * @param {number} number - value from this.randomIndex
+    * @param {string} action - pagination direction a user clicks
+    */
   	addIndexToOrderArray(number, action) {
   		if (action != 'back') {
 	  		this.orderArray.push(number);
@@ -19,13 +27,15 @@ class FlashcardModel {
   		return Promise.resolve(true);
   	}
 
+    /**
+    * Determine card content based on action and attach to DOM
+    * @param {string} action - pagination direction a user clicks
+    */
   	attachContentToDOM(action) {
         const setQandA = index => {
             const card = flashcardContent[index];
             const question = card.question;
-            const answer = `${card.answer}
-                  <small><a href="${card.sourceUrl}">
-                  ${card.source}</a></small>` ;
+            const answer = `${card.answer}<small><a href="${card.sourceUrl}">${card.source}</a></small>`;
 
             $('.question').html(question);
             $('.answer').html(answer).hide();

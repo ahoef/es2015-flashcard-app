@@ -1,5 +1,4 @@
 node_modules
 todo.txt
 .sass-cache/
-dist/
 src/.DS_Store

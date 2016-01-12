@@ -5,101 +5,19 @@ var _flashcardController = require('./flashcardController.js');
 
 var _flashcardController2 = _interopRequireDefault(_flashcardController);
 
-var _flashCardModel = require('./flashCardModel.js');
+var _flashcardModel = require('./flashcardModel.js');
 
-var _flashCardModel2 = _interopRequireDefault(_flashCardModel);
+var _flashcardModel2 = _interopRequireDefault(_flashcardModel);
+
+var _flashcardView = require('./flashcardView.js');
+
+var _flashcardView2 = _interopRequireDefault(_flashcardView);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-$('.next').on('click', function () {
-	var action = "next";
-	_flashcardController2.default.render(_flashCardModel2.default, action);
-});
+_flashcardController2.default.render(_flashcardModel2.default);
 
-$('.back').on('click', function () {
-	var action = "back";
-	_flashcardController2.default.render(_flashCardModel2.default, action);
-});
-
-$('.show-answer').on('click', function () {
-	$('.answer').show();
-});
-
-_flashcardController2.default.render(_flashCardModel2.default);
-
-},{"./flashCardModel.js":2,"./flashcardController.js":4}],2:[function(require,module,exports){
-'use strict';
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-Object.defineProperty(exports, "__esModule", {
-      value: true
-});
-
-var _flashcardContent = require('./flashcardContent.js');
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var FlashcardModel = function () {
-      function FlashcardModel() {
-            _classCallCheck(this, FlashcardModel);
-
-            this.randomIndex = 0;
-            this.orderArray = [];
-      }
-
-      _createClass(FlashcardModel, [{
-            key: 'generateRandomNum',
-            value: function generateRandomNum() {
-                  var number = Math.floor(Math.random() * _flashcardContent.flashcardContent.length);
-                  this.randomIndex = number;
-                  return Promise.resolve(number);
-            }
-      }, {
-            key: 'addIndexToOrderArray',
-            value: function addIndexToOrderArray(number, action) {
-                  if (action != 'back') {
-                        this.orderArray.push(number);
-                  }
-                  return Promise.resolve(true);
-            }
-      }, {
-            key: 'attachContentToDOM',
-            value: function attachContentToDOM(action) {
-                  var setQandA = function setQandA(index) {
-                        var card = _flashcardContent.flashcardContent[index];
-                        var question = card.question;
-                        var answer = card.answer + '\n                  <small><a href="' + card.sourceUrl + '">\n                  ' + card.source + '</a></small>';
-
-                        $('.question').html(question);
-                        $('.answer').html(answer).hide();
-                  };
-
-                  if (action === 'back') {
-                        if (this.orderArray.length > 1) {
-                              this.orderArray.pop();
-                              var previousIndex = this.orderArray[this.orderArray.length - 1];
-                              setQandA(previousIndex);
-                        } else {
-                              $('.back').hide();
-                        }
-                  } else {
-                        setQandA(this.randomIndex);
-                        $('.back').show();
-                  }
-
-                  return Promise.resolve(true);
-            }
-      }]);
-
-      return FlashcardModel;
-}();
-
-var model = new FlashcardModel();
-
-exports.default = model;
-
-},{"./flashcardContent.js":3}],3:[function(require,module,exports){
+},{"./flashcardController.js":3,"./flashcardModel.js":4,"./flashcardView.js":5}],2:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -180,15 +98,30 @@ var flashcardContent = exports.flashcardContent = [{
 	answer: "A closure is the combination of a function and the scope object in which it was created. Closures let you save state — as such, they can often be used in place of objects.",
 	source: "Stack Overflow",
 	sourceUrl: "http://stackoverflow.com/questions/111102/how-do-javascript-closures-work"
+}, {
+	question: "What's the spread operator?",
+	answer: "The spread operator allows an expression to be expanded in places where multiple arguments (for function calls) or multiple elements (for array literals) are expected.",
+	source: "Mozilla Developer Network",
+	sourceUrl: "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_operator"
+}, {
+	question: "What would the <code>.call()</code> method return in this example? <br><code>function add(c, d) {return this.a + this.b + c + d} <br> var o = {a:1, b:3};</code>",
+	answer: "The <code>call()</code> method calls a function with a given this value and arguments provided individually.<br><code>add.call(o, 5, 7); <br>// 1 + 3 + 5 + 7 = 16</code>",
+	source: "Mozilla Developer Network",
+	sourceUrl: "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this#As_a_constructor"
+}, {
+	question: "What would the <code>.apply()</code> method return in this example? <br><code>function add(c, d) {<br>return this.a + this.b + c + d} <br> var o = {a:1, b:3};</code>",
+	answer: "The <code>apply()</code> method calls a function with a given this value and arguments provided as an array (or an array-like object).<br><code>add.apply(o, [10, 20]); <br>// 1 + 3 + 10 + 20 = 34</code>",
+	source: "Mozilla Developer Network",
+	sourceUrl: "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this#As_a_constructor"
 }];
 
-},{}],4:[function(require,module,exports){
+},{}],3:[function(require,module,exports){
 'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 
 var _flashcardContent = require('./flashcardContent.js');
@@ -202,37 +135,43 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var FlashcardController = function () {
-  function FlashcardController(model) {
-    _classCallCheck(this, FlashcardController);
-  }
-
-  _createClass(FlashcardController, [{
-    key: 'render',
-    value: function render(model, action) {
-
-      model.generateRandomNum().then(function (number) {
-        return model.addIndexToOrderArray(number, action);
-      }).then(function (data) {
-        return model.attachContentToDOM(action);
-      });
-
-      console.log(model);
+    function FlashcardController(model) {
+        _classCallCheck(this, FlashcardController);
     }
-  }]);
 
-  return FlashcardController;
+    /**
+    * Includes promise chain to randomly display a card's content and remember the order
+    * Called from ./app.js and ./flashcardView.js
+    * @param {Object} model - flashcard model
+    * @param {string} action - pagination direction a user clicks
+    */
+
+    _createClass(FlashcardController, [{
+        key: 'render',
+        value: function render(model, action) {
+            model.generateRandomNum().then(function (number) {
+                return model.addIndexToOrderArray(number, action);
+            }).then(function (data) {
+                return model.attachContentToDOM(action);
+            }).catch(function (error) {
+                console.log(error);
+            });
+        }
+    }]);
+
+    return FlashcardController;
 }();
 
 var controller = new FlashcardController(_flashcardModel2.default);
 exports.default = controller;
 
-},{"./flashcardContent.js":3,"./flashcardModel.js":5}],5:[function(require,module,exports){
+},{"./flashcardContent.js":2,"./flashcardModel.js":4}],4:[function(require,module,exports){
 'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 Object.defineProperty(exports, "__esModule", {
-      value: true
+  value: true
 });
 
 var _flashcardContent = require('./flashcardContent.js');
@@ -240,62 +179,106 @@ var _flashcardContent = require('./flashcardContent.js');
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var FlashcardModel = function () {
-      function FlashcardModel() {
-            _classCallCheck(this, FlashcardModel);
+  function FlashcardModel() {
+    _classCallCheck(this, FlashcardModel);
 
-            this.randomIndex = 0;
-            this.orderArray = [];
+    this.randomIndex = 0;
+    this.orderArray = [];
+  }
+
+  /**
+  * Generates a random number and saves it to this.randomIndex
+  */
+
+  _createClass(FlashcardModel, [{
+    key: 'generateRandomNum',
+    value: function generateRandomNum() {
+      var number = Math.floor(Math.random() * _flashcardContent.flashcardContent.length);
+      this.randomIndex = number;
+      return Promise.resolve(number);
+    }
+
+    /**
+    * If the action is not 'back', remember the order of random numbers generated
+    * @param {number} number - value from this.randomIndex
+    * @param {string} action - pagination direction a user clicks
+    */
+
+  }, {
+    key: 'addIndexToOrderArray',
+    value: function addIndexToOrderArray(number, action) {
+      if (action != 'back') {
+        this.orderArray.push(number);
+      }
+      return Promise.resolve(true);
+    }
+
+    /**
+    * Determine card content based on action and attach to DOM
+    * @param {string} action - pagination direction a user clicks
+    */
+
+  }, {
+    key: 'attachContentToDOM',
+    value: function attachContentToDOM(action) {
+      var setQandA = function setQandA(index) {
+        var card = _flashcardContent.flashcardContent[index];
+        var question = card.question;
+        var answer = card.answer + '<small><a href="' + card.sourceUrl + '">' + card.source + '</a></small>';
+
+        $('.question').html(question);
+        $('.answer').html(answer).hide();
+      };
+
+      if (action === 'back') {
+        if (this.orderArray.length > 1) {
+          this.orderArray.pop();
+          var previousIndex = this.orderArray[this.orderArray.length - 1];
+          setQandA(previousIndex);
+        } else {
+          $('.back').hide();
+        }
+      } else {
+        setQandA(this.randomIndex);
+        $('.back').show();
       }
 
-      _createClass(FlashcardModel, [{
-            key: 'generateRandomNum',
-            value: function generateRandomNum() {
-                  var number = Math.floor(Math.random() * _flashcardContent.flashcardContent.length);
-                  this.randomIndex = number;
-                  return Promise.resolve(number);
-            }
-      }, {
-            key: 'addIndexToOrderArray',
-            value: function addIndexToOrderArray(number, action) {
-                  if (action != 'back') {
-                        this.orderArray.push(number);
-                  }
-                  return Promise.resolve(true);
-            }
-      }, {
-            key: 'attachContentToDOM',
-            value: function attachContentToDOM(action) {
-                  var setQandA = function setQandA(index) {
-                        var card = _flashcardContent.flashcardContent[index];
-                        var question = card.question;
-                        var answer = card.answer + '\n                  <small><a href="' + card.sourceUrl + '">\n                  ' + card.source + '</a></small>';
+      return Promise.resolve(true);
+    }
+  }]);
 
-                        $('.question').html(question);
-                        $('.answer').html(answer).hide();
-                  };
-
-                  if (action === 'back') {
-                        if (this.orderArray.length > 1) {
-                              this.orderArray.pop();
-                              var previousIndex = this.orderArray[this.orderArray.length - 1];
-                              setQandA(previousIndex);
-                        } else {
-                              $('.back').hide();
-                        }
-                  } else {
-                        setQandA(this.randomIndex);
-                        $('.back').show();
-                  }
-
-                  return Promise.resolve(true);
-            }
-      }]);
-
-      return FlashcardModel;
+  return FlashcardModel;
 }();
 
 var model = new FlashcardModel();
 
 exports.default = model;
 
-},{"./flashcardContent.js":3}]},{},[1]);
+},{"./flashcardContent.js":2}],5:[function(require,module,exports){
+'use strict';
+
+var _flashcardController = require('./flashcardController.js');
+
+var _flashcardController2 = _interopRequireDefault(_flashcardController);
+
+var _flashcardModel = require('./flashcardModel.js');
+
+var _flashcardModel2 = _interopRequireDefault(_flashcardModel);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+$('.next').on('click', function () {
+	var action = "next";
+	_flashcardController2.default.render(_flashcardModel2.default, action);
+});
+
+$('.back').on('click', function () {
+	var action = "back";
+	_flashcardController2.default.render(_flashcardModel2.default, action);
+});
+
+$('.show-answer').on('click', function () {
+	$('.answer').show();
+});
+
+},{"./flashcardController.js":3,"./flashcardModel.js":4}]},{},[1]);
