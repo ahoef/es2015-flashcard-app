@@ -1,5 +1,12 @@
+@mixin base-style($text-color) {
+	background-color: $main-color;
+	font-family: 'Rambla', sans-serif;
+    font-size: 18px;
+    color: $text-color;
+}
+
 @mixin card {
-    border: 3px solid $mainColor;
+    border: 3px solid $main-color;
     border-radius: 5px;
     max-width: 300px;
     width: 90%;
