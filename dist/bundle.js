@@ -33,7 +33,7 @@ _flashcardController2.default.render(_flashCardModel2.default);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+      value: true
 });
 
 var _flashcardContent = require('./flashcardContent.js');
@@ -41,61 +41,58 @@ var _flashcardContent = require('./flashcardContent.js');
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var FlashcardModel = function () {
-  function FlashcardModel() {
-    _classCallCheck(this, FlashcardModel);
+      function FlashcardModel() {
+            _classCallCheck(this, FlashcardModel);
 
-    this.randomIndex = 0;
-    this.orderArray = [];
-  }
-
-  _createClass(FlashcardModel, [{
-    key: 'generateRandomNum',
-    value: function generateRandomNum() {
-      var number = Math.floor(Math.random() * _flashcardContent.flashcardContent.length);
-      this.randomIndex = number;
-      return Promise.resolve(number);
-    }
-  }, {
-    key: 'addIndexToOrderArray',
-    value: function addIndexToOrderArray(number, action) {
-      if (action != 'back') {
-        this.orderArray.push(number);
-      }
-      return Promise.resolve(true);
-    }
-  }, {
-    key: 'attachContentToDOM',
-    value: function attachContentToDOM(action) {
-      var question = undefined;
-      var answer = undefined;
-      var previousIndex = undefined;
-
-      if (action === 'back') {
-        if (this.orderArray.length > 1) {
-          this.orderArray.pop();
-          previousIndex = this.orderArray[this.orderArray.length - 1];
-
-          question = _flashcardContent.flashcardContent[previousIndex].question;
-          answer = _flashcardContent.flashcardContent[previousIndex].answer;
-        } else {
-          $('.back').hide();
-        }
-      } else {
-
-        previousIndex = this.orderArray[this.orderArray.length - 2];
-        question = _flashcardContent.flashcardContent[this.randomIndex].question;
-        answer = _flashcardContent.flashcardContent[this.randomIndex].answer;
-        $('.back').show();
+            this.randomIndex = 0;
+            this.orderArray = [];
       }
 
-      $('.question').html(question);
-      $('.answer').html(answer).hide();
+      _createClass(FlashcardModel, [{
+            key: 'generateRandomNum',
+            value: function generateRandomNum() {
+                  var number = Math.floor(Math.random() * _flashcardContent.flashcardContent.length);
+                  this.randomIndex = number;
+                  return Promise.resolve(number);
+            }
+      }, {
+            key: 'addIndexToOrderArray',
+            value: function addIndexToOrderArray(number, action) {
+                  if (action != 'back') {
+                        this.orderArray.push(number);
+                  }
+                  return Promise.resolve(true);
+            }
+      }, {
+            key: 'attachContentToDOM',
+            value: function attachContentToDOM(action) {
+                  var setQandA = function setQandA(index) {
+                        var card = _flashcardContent.flashcardContent[index];
+                        var question = card.question;
+                        var answer = card.answer + '\n                  <small><a href="' + card.sourceUrl + '">\n                  ' + card.source + '</a></small>';
 
-      return Promise.resolve(true);
-    }
-  }]);
+                        $('.question').html(question);
+                        $('.answer').html(answer).hide();
+                  };
 
-  return FlashcardModel;
+                  if (action === 'back') {
+                        if (this.orderArray.length > 1) {
+                              this.orderArray.pop();
+                              var previousIndex = this.orderArray[this.orderArray.length - 1];
+                              setQandA(previousIndex);
+                        } else {
+                              $('.back').hide();
+                        }
+                  } else {
+                        setQandA(this.randomIndex);
+                        $('.back').show();
+                  }
+
+                  return Promise.resolve(true);
+            }
+      }]);
+
+      return FlashcardModel;
 }();
 
 var model = new FlashcardModel();
@@ -235,7 +232,7 @@ exports.default = controller;
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+      value: true
 });
 
 var _flashcardContent = require('./flashcardContent.js');
@@ -243,61 +240,58 @@ var _flashcardContent = require('./flashcardContent.js');
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var FlashcardModel = function () {
-  function FlashcardModel() {
-    _classCallCheck(this, FlashcardModel);
+      function FlashcardModel() {
+            _classCallCheck(this, FlashcardModel);
 
-    this.randomIndex = 0;
-    this.orderArray = [];
-  }
-
-  _createClass(FlashcardModel, [{
-    key: 'generateRandomNum',
-    value: function generateRandomNum() {
-      var number = Math.floor(Math.random() * _flashcardContent.flashcardContent.length);
-      this.randomIndex = number;
-      return Promise.resolve(number);
-    }
-  }, {
-    key: 'addIndexToOrderArray',
-    value: function addIndexToOrderArray(number, action) {
-      if (action != 'back') {
-        this.orderArray.push(number);
-      }
-      return Promise.resolve(true);
-    }
-  }, {
-    key: 'attachContentToDOM',
-    value: function attachContentToDOM(action) {
-      var question = undefined;
-      var answer = undefined;
-      var previousIndex = undefined;
-
-      if (action === 'back') {
-        if (this.orderArray.length > 1) {
-          this.orderArray.pop();
-          previousIndex = this.orderArray[this.orderArray.length - 1];
-
-          question = _flashcardContent.flashcardContent[previousIndex].question;
-          answer = _flashcardContent.flashcardContent[previousIndex].answer;
-        } else {
-          $('.back').hide();
-        }
-      } else {
-
-        previousIndex = this.orderArray[this.orderArray.length - 2];
-        question = _flashcardContent.flashcardContent[this.randomIndex].question;
-        answer = _flashcardContent.flashcardContent[this.randomIndex].answer;
-        $('.back').show();
+            this.randomIndex = 0;
+            this.orderArray = [];
       }
 
-      $('.question').html(question);
-      $('.answer').html(answer).hide();
+      _createClass(FlashcardModel, [{
+            key: 'generateRandomNum',
+            value: function generateRandomNum() {
+                  var number = Math.floor(Math.random() * _flashcardContent.flashcardContent.length);
+                  this.randomIndex = number;
+                  return Promise.resolve(number);
+            }
+      }, {
+            key: 'addIndexToOrderArray',
+            value: function addIndexToOrderArray(number, action) {
+                  if (action != 'back') {
+                        this.orderArray.push(number);
+                  }
+                  return Promise.resolve(true);
+            }
+      }, {
+            key: 'attachContentToDOM',
+            value: function attachContentToDOM(action) {
+                  var setQandA = function setQandA(index) {
+                        var card = _flashcardContent.flashcardContent[index];
+                        var question = card.question;
+                        var answer = card.answer + '\n                  <small><a href="' + card.sourceUrl + '">\n                  ' + card.source + '</a></small>';
 
-      return Promise.resolve(true);
-    }
-  }]);
+                        $('.question').html(question);
+                        $('.answer').html(answer).hide();
+                  };
 
-  return FlashcardModel;
+                  if (action === 'back') {
+                        if (this.orderArray.length > 1) {
+                              this.orderArray.pop();
+                              var previousIndex = this.orderArray[this.orderArray.length - 1];
+                              setQandA(previousIndex);
+                        } else {
+                              $('.back').hide();
+                        }
+                  } else {
+                        setQandA(this.randomIndex);
+                        $('.back').show();
+                  }
+
+                  return Promise.resolve(true);
+            }
+      }]);
+
+      return FlashcardModel;
 }();
 
 var model = new FlashcardModel();

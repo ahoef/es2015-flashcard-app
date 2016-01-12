@@ -6,7 +6,7 @@ import sass from 'gulp-ruby-sass';
 gulp.task('default', ['browserify', 'sass', 'watch']);
 
 gulp.task('browserify', () => {
-  return browserify('src/app.js')
+  return browserify('src/js/app.js')
     .transform('babelify')
     .bundle()
     .pipe(source('bundle.js'))
@@ -20,7 +20,7 @@ gulp.task('sass', () => {
 });
 
 gulp.task('watch', function() {
-    gulp.watch('src/*.js', ['browserify']);
+    gulp.watch('src/js/*.js', ['browserify']);
     gulp.watch('src/css/*.scss', ['sass']);
 });
 

@@ -20,38 +20,33 @@ class FlashcardModel {
   	}
 
   	attachContentToDOM(action) {
-  		let question;
-  		let answer;
-  		let previousIndex;
+        const setQandA = index => {
+            const card = flashcardContent[index];
+            const question = card.question;
+            const answer = `${card.answer}
+                  <small><a href="${card.sourceUrl}">
+                  ${card.source}</a></small>` ;
+
+            $('.question').html(question);
+            $('.answer').html(answer).hide();
+        }
 
   		if (action === 'back') {
   			if (this.orderArray.length > 1) {
   				this.orderArray.pop();
-  				previousIndex = this.orderArray[this.orderArray.length - 1];
-
-  				question = flashcardContent[previousIndex].question;
-  				answer = flashcardContent[previousIndex].answer;
-
+  				const previousIndex = this.orderArray[this.orderArray.length - 1];
+                setQandA(previousIndex);
   			} else {
   				$('.back').hide();
   			}
 
   		} else {
-
-  			previousIndex = this.orderArray[this.orderArray.length - 2];
-  			question = flashcardContent[this.randomIndex].question;
-  			answer = flashcardContent[this.randomIndex].answer;
-  			$('.back').show();
+            setQandA(this.randomIndex);
+            $('.back').show();
   		}
-
-  		
-  		$('.question').html(question);
-  		$('.answer').html(answer).hide();
-
 
   		return Promise.resolve(true);
   	}
-
 }
 
 const model = new FlashcardModel();
