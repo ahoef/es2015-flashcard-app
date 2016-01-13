@@ -118,6 +118,18 @@ button {
   button:hover {
     cursor: pointer; }
 
+footer {
+  margin: 100px 20px 50px;
+  font-size: 14px;
+  color: #90becd; }
+  footer a {
+    font-size: 14px;
+    text-decoration: none;
+    border-bottom: 1px solid;
+    color: #90becd; }
+    footer a:hover {
+      border-bottom: none; }
+
 @media (max-width: 640px) {
   body {
     font-size: 16px; }

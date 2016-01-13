@@ -44,13 +44,7 @@ body {
         margin-top: 20px;
     }
     a {
-        font-size: 14px;
-        text-decoration: none;
-        border-bottom: 1px solid;
-        color: lighten($main-color, 30%);
-        &:hover {
-            border-bottom: none;
-        }
+        @include link-style;
     }
 }
 
@@ -63,6 +57,16 @@ button {
     &:hover {
         cursor: pointer;
     }
+}
+
+footer {
+    margin: 100px 20px 50px;
+    font-size: 14px;
+    color: lighten($main-color, 30%);
+    a {
+        @include link-style;
+    }
+
 }
 
 @media (max-width: 640px) {
