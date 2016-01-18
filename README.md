@@ -2,7 +2,7 @@
 
 A basic MVC app written in vanilla ES2015 JavaScript, with a toolset of Babel, Gulp, Browserify and Sass. Users can view flashcard questions, click to reveal answers, and paginate forward and backward through cards.
 
-[www.ahoef.co/flashcards](www.ahoef.co/flashcards)
+[www.ahoef.co/js-flashcards](www.ahoef.co/js-flashcards)
 
 
 ### Development 
