@@ -182,7 +182,7 @@ var FlashcardModel = function () {
   function FlashcardModel() {
     _classCallCheck(this, FlashcardModel);
 
-    this.randomIndex = 0;
+    this.randomIndex = Math.floor(Math.random() * _flashcardContent.flashcardContent.length);
     this.orderArray = [];
   }
 
@@ -194,7 +194,7 @@ var FlashcardModel = function () {
     key: 'generateRandomNum',
     value: function generateRandomNum() {
       var number = Math.floor(Math.random() * _flashcardContent.flashcardContent.length);
-      this.randomIndex = number;
+      // this.randomIndex = number;
       return Promise.resolve(number);
     }
 
@@ -232,15 +232,16 @@ var FlashcardModel = function () {
 
       if (action === 'back') {
         if (this.orderArray.length > 1) {
-          this.orderArray.pop();
-          var previousIndex = this.orderArray[this.orderArray.length - 1];
+          // this.orderArray.pop();
+          // const previousIndex = this.orderArray[this.orderArray.length - 1];
+          var previousIndex = this.orderArray.pop();
           setQandA(previousIndex);
         } else {
-          $('.back').hide();
+          $('.back').addClass('faded');
         }
       } else {
         setQandA(this.randomIndex);
-        $('.back').show();
+        $('.back').removeClass('faded');
       }
 
       return Promise.resolve(true);

@@ -11,16 +11,16 @@ class FlashcardController {
     * @param {string} action - pagination direction a user clicks
     */
     render(model, action){
-  	    model.generateRandomNum()
-  		.then( number => {
-  			return model.addIndexToOrderArray(number, action);
-  		})
-  		.then( data => {
-  			return model.attachContentToDOM(action);
-  		})
-        .catch(error => {
-            console.log(error);
-        })
+        model.generateRandomNum()
+            .then( number => {
+                return model.addIndexToOrderArray(number, action);
+            })
+            .then( data => {
+                return model.attachContentToDOM(action);
+            })
+            .catch(error => {
+                console.log(error);
+            })
     }
 }
 
